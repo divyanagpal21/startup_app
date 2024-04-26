@@ -1,0 +1,30 @@
+.icon{
+    height: 4rem;
+    width: 4rem;
+    transform: scale(1.2);
+    position: absolute;
+    left:4rem;
+}
+
+.firstLetter{
+    border-bottom: 2px solid orangered;
+}
+
+.common:hover {
+    color:orangered;
+ 
+    border:none;
+}
+
+
+
+
+.text{
+    color:white;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+}
+
+.text:hover{
+    border:none;
+}

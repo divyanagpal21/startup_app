@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0; 
+}
+
+.lund{
+    /* display: flex;
+    justify-content: space-around;
+    align-items: center; */
+    background-color: #191919;
+    height: 4rem;
+    width: 100vw;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon-container {
+    height: 4rem;
+    width: 4rem;
+    transform: scale(1);
+    background-image: url('../assets/images/elon.png');
+    background-size: contain;
+
+}
+
+.navItem {
+    display: inline-block; 
+    font-size: 1.3rem;
+    padding-top: 0.5rem;
+}
+
+.navLink {
+    text-decoration: none;
+    color: white;
+    font-size: 2;
+}
+
+.navContainer{
+    margin: 0;
+    padding: 0;
+} 
+
+
