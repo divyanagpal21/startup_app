@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import '../css/NewOwner.css'; // Import CSS stylesheet
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Export from './Export';
 
 const FormComponent = () => {
   const [industry, setIndustry] = useState('');
@@ -31,7 +32,8 @@ const FormComponent = () => {
   };
 
   const handleButtonClick = () => {
-    window.location.href = '/Results'; // Redirect to "/results" page
+    window.location.href = `/Export?industry=${industry}&designPref=${designPref}&startupDescription=${startupDescription}&usp=${usp}&
+    Avatar=${Avatar}`; // Redirect to "/results" page
   };
 
   return (
