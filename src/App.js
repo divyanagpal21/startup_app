@@ -9,7 +9,7 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Results from './pages/Results';
 import Homie from './pages/Homie';
-import Export from './pages/Export';
+// import Export from './pages/Export';
 import Footer from './components/Footer';
 
 const App = () => (
@@ -21,7 +21,7 @@ const App = () => (
       <Route path="/ExistingOwner" element={<ExistingOwner/>} />
       <Route path="/NewOwner" element={<NewOwner />} />
       <Route path="/Results" element={<Results />} />
-      <Route path="/Export" element={<Export />} />
+      {/* <Route path="/Export" element={<Export />} /> */}
     </Routes>
      <Footer />
   </Box>

@@ -1,47 +1,13 @@
-// FormComponent.jsx
-import React, { useState } from 'react';
-import '../css/NewOwner.css'; // Import CSS stylesheet
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import Export from './Export';
-import { industry, designPref, startupDescription, usp, Avatar } from './Export';
-import Fetch from './Fetch'
+
+let { industry, designPref, startupDescription, usp, Avatar } = require('./Export');
+
+console.log('Industry:', industry);
+console.log('Design Preference:', designPref);
+console.log('Startup Description:', startupDescription);
+console.log('USP:', usp);
+console.log('Avatar:', Avatar);
+
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI("AIzaSyBAOAHW2VCxTeq6urcf-ea98Gx69vD_XaA");
-
-// const { industry, designPref, startupDescription, usp, Avatar } = require('./Export');
-
-const FormComponent = () => {
-  const [industryState, setIndustryState] = useState(industry);
-  const [designPrefState, setDesignPrefState] = useState(designPref);
-  const [startupDescriptionState, setStartupDescriptionState] = useState(startupDescription);
-  const [uspState, setUspState] = useState(usp);
-  const [avatarState, setAvatarState] = useState(Avatar);
-
-  const handleIndustryChange = (event) => {
-    setIndustryState(event.target.value);
-    
-  };
-
-  const handleDesignPrefChange = (event) => {
-    setDesignPrefState(event.target.value);
-  };
-
-  const handleStartupDescriptionChange = (event) => {
-    setStartupDescriptionState(event.target.value);
-  };
-
-  const handleUSPChange = (event) => {
-    setUspState(event.target.value);
-  };
-
-  const handleAvatarChange = (event) => {
-    setAvatarState(event.target.value);
-  };
-
-  const handleButtonClick = () => {
-  
-    alert("Inside button")
-    const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 // Access your API key as an environment variable (see "Set up your API key" above)
 const genAI = new GoogleGenerativeAI("AIzaSyBAOAHW2VCxTeq6urcf-ea98Gx69vD_XaA");
@@ -59,17 +25,14 @@ async function run() {
 
  const parts = [
   {
-    text: `prompt - You are ${avatarState} and you are given a task to make a full blown project structure for a given idea which is  ${startupDescriptionState}
+    text: `prompt - You are a Product Manager at a MNC and you are given a task to make a full blown project structure for a given idea which is a bakery company
 
     Develop a plan which consist of  - 
     
     NOTE : before suggesting answer for each of these requirements think what is the audience for the product, what should be the tone of the company while marketing it's product, should the business be more creative or professional in it's approach to attract customers. 
     
-    - design layout should follow a ${designPrefState} approach
-    - the industry it belongs to is ${industryState}
-    - the usp should include the characteristic ${uspState}
     - overview of the business idea, what is the business idea, what is the problem it is solving, what is the USP of the business
-    - target audience ( make a list of target audience, seperated by commas, atleast 4)
+    - target audience ( make a list of target audience, seperated by commas, atleat 4)
     -suggested names for the business (total number of suggestions should be in mutliples of 4)
     - current industry trends in India and in US/Europe
     - primary pain points of users in this domain, atleast 4 pain points in an array
@@ -210,102 +173,10 @@ const result = await model.generateContent({
 //   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
-  // module.exports = [text];
+  
   console.log(text);
 }
 
+
+
 run();
-
-// window.location.href = './Results'
-
-    
-  };
-
-  return (
-    <form className="form">
-      <div className="form-group">
-        <label className="form-label">Industry:</label>
-        <div className="radio-group">
-          <input type="radio" id="healthcare" name="industry" value="healthcare" onChange={handleIndustryChange} />
-          <label htmlFor="healthcare">Healthcare</label>
-
-          <input type="radio" id="education" name="industry" value="education" onChange={handleIndustryChange} />
-          <label htmlFor="education">Education</label>
-
-          <input type="radio" id="finance" name="industry" value="finance" onChange={handleIndustryChange} />
-          <label htmlFor="finance">Finance</label>
-
-          <input type="radio" id="tech" name="industry" value="tech" onChange={handleIndustryChange} />
-          <label htmlFor="tech">Tech</label>
-
-          <input type="radio" id="other" name="industry" value="other" onChange={handleIndustryChange} />
-          <label htmlFor="other">Other</label>
-        </div>
-      </div>
-      <div className="form-group">
-        <label className="form-label">Design Preference:</label>
-        <div className="radio-group">
-          <input type="radio" id="minimalistic" name="designPref" value="minimalistic" onChange={handleDesignPrefChange} />
-          <label htmlFor="minimalistic">Minimalistic</label>
-
-          <input type="radio" id="modern" name="designPref" value="modern" onChange={handleDesignPrefChange} />
-          <label htmlFor="modern">Modern</label>
-
-          <input type="radio" id="vintage" name="designPref" value="vintage" onChange={handleDesignPrefChange} />
-          <label htmlFor="vintage">Vintage</label>
-
-          <input type="radio" id="corporate" name="designPref" value="corporate" onChange={handleDesignPrefChange} />
-          <label htmlFor="corporate">Corporate</label>
-
-          <input type="radio" id="playful" name="designPref" value="playful" onChange={handleDesignPrefChange} />
-          <label htmlFor="playful">Playful</label>
-        </div>
-      </div>
-      <div className="form-group">
-        <label className="form-label" htmlFor="startupDescription">Describe your startup:</label>
-        <textarea id="startupDescription" className="form-textarea" value={startupDescriptionState} onChange={handleStartupDescriptionChange} />
-      </div>
-      <div className="form-group">
-        <label className="form-label">USP:</label>
-        <div className="radio-group">
-          <input type="radio" id="innovative" name="usp" value="innovative" onChange={handleUSPChange} />
-          <label htmlFor="innovative">Innovative</label>
-
-          <input type="radio" id="cost-effective" name="usp" value="cost-effective" onChange={handleUSPChange} />
-          <label htmlFor="cost-effective">Cost-effective</label>
-
-          <input type="radio" id="user-friendly" name="usp" value="user-friendly" onChange={handleUSPChange} />
-          <label htmlFor="user-friendly">User-friendly</label>
-
-          <input type="radio" id="high-quality" name="usp" value="high-quality" onChange={handleUSPChange} />
-          <label htmlFor="high-quality">High-quality</label>
-
-          <input type="radio" id="customizable" name="usp" value="customizable" onChange={handleUSPChange} />
-          <label htmlFor="customizable">Customizable</label>
-        </div>
-        <div className="form-group">
-
-        <label className="form-label">Avatar:</label>
-        <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off" value = "SnoopDOGG" onChange={handleAvatarChange}/>
-        <label class="btn btn-secondary snoop avatar" for="option4"></label>
-
-        <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off" value = "slapSmith" onChange={handleAvatarChange}/>
-        <label class="btn btn-secondary williams avatar" for="option2"></label>
-
-        <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" value = "ye" onChange={handleAvatarChange}/>
-        <label class="btn btn-secondary kanye avatar" for="option1"></label>
-
-        <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" value = "guruji" onChange={handleAvatarChange}/>
-        <label class="btn btn-secondary guruji avatar" for="option3"></label>
-        </div>
-        <div className="text-center">
-              <div>
-                <button type="button" className="btn btn-primary btn-lg" onClick={handleButtonClick}>Submit</button>
-              </div>
-            </div>
-      </div>
-    </form>
-  );
-};
-
-export default FormComponent;
