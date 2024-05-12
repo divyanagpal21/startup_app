@@ -2,32 +2,44 @@
 import React, { useState } from 'react';
 import '../css/NewOwner.css'; // Import CSS stylesheet
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useSelector,useDispatch } from 'react-redux';
+import { changeAvatar,changeDesign,changeIndustry,changeStartUpDesc,changeUsp } from '../redux';
+
 
 const FormComponent = () => {
-  const [industry, setIndustry] = useState('');
-  const [designPref, setDesignPref] = useState('');
-  const [startupDescription, setStartupDescription] = useState('');
-  const [usp, setUSP] = useState('');
-  const [Avatar, setAvatar] = useState('');
+  const startupDescription = "sex0;";
+  // const [industry, setIndustry] = useState('');
+  // const [designPref, setDesignPref] = useState('');
+  // const [startupDescription, setStartupDescription] = useState('');
+  // const [usp, setUSP] = useState('');
+  // const [Avatar, setAvatar] = useState('');
+  const avatar = useSelector(state => state.avatar);
+  const design = useSelector(state => state.design);
+  const usp = useSelector(state => state.usp);
+  const startupDesc = useSelector(state => state.startupDesc);
+  const industry = useSelector(state => state.industry);
+  const dispatch = useDispatch();
+
+  // changeAvatar('yes');
 
   const handleIndustryChange = (event) => {
-    setIndustry(event.target.value);
   };
 
   const handleDesignPrefChange = (event) => {
-    setDesignPref(event.target.value);
+    // setDesignPref(event.target.value);
   };
 
   const handleStartupDescriptionChange = (event) => {
-    setStartupDescription(event.target.value);
+    // setStartupDescription(event.target.value);
   };
 
   const handleUSPChange = (event) => {
-    setUSP(event.target.value);
+    // setUSP(event.target.value);
   };
 
   const handleAvatarChange = (event) => {
-    setAvatar(event.target.value);
+    dispatch(changeAvatar(event.target.value));
+    
   };
 
   const handleButtonClick = () => {
@@ -42,6 +54,7 @@ const FormComponent = () => {
 
   return (
     <form className="form">
+      <h1 style = {{color:'white'}}>sex {avatar}</h1>
       <div className="form-group">
         <label className="form-label">Industry:</label>
         <div className="radio-group">
@@ -121,6 +134,8 @@ const FormComponent = () => {
               <div>
                 <button type="button" className="btn btn-primary btn-lg" onClick={handleButtonClick}>Submit</button>
               </div>
+              
+              {console.log(avatar)}
             </div>
       </div>
     </form>

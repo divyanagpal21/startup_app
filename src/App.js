@@ -11,8 +11,12 @@ import Results from './pages/Results';
 import Homie from './pages/Homie';
 // import Export from './pages/Export';
 import Footer from './components/Footer';
+import store from './redux/store';
+import { Provider } from 'react-redux';
+
 
 const App = () => (
+  <Provider store = {store}>
   <Box style = {{backgroundColor: '#191919', height: '100vh'}}>
     <Navbar /> 
     {/* <hr className='my-3' style={{ borderColor: 'white' }}/>  */}
@@ -25,6 +29,7 @@ const App = () => (
     </Routes>
      <Footer />
   </Box>
+  </Provider>
 );
 
 export default App;
